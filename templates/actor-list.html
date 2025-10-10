@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Fundadores</h1>
+<table>
+  <tr>
+    <th>
+      <b>Id</b>
+    </th>
+    <th>
+      <b>Nome</b>
+    </th>
+    <th>
+      <b>Idade</b>
+    </th>
+    <th>
+      <b>Nacionalidade</b>
+    </th>
+  </tr>
+  {% for f in fundadores %}
+  <tr>
+    <td>
+      <a href="/fundadores/{{ f.IDFundador }}">{{ f.IDFundador }}</a>
+    </td>
+    <td>
+      {{ f.Nome }}
+    </td>
+    <td>
+      {{ f.Idade }}
+    </td>
+    <td>
+      {{ f.Nacionalidade }}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

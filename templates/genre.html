@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ setor.Nome }} </h1>
+<p>
+  <b>SetorID: </b>{{ setor.IDSetor }}
+</p>
+<p>
+  <b>Nome: </b>{{ setor.Nome}}
+</p>
+<p>
+  <b>Empresas: </b>
+<ul>
+  {% for e in empresas %}
+  <li>
+    <a href="/empresas/{{ e.IDEmpresas }}">{{ e.Nome }}</a>
+  </li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}

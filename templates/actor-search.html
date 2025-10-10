@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Search results</h1>
+<p><b>Search expression</b>: "{{ search.expr }}"</p>
+<ul>
+  {% for f in fundadores %}
+  <li>
+    <a href="/fundadores/{{ f.IDFundador }}">{{ f.Nome }}</a>
+  </li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}

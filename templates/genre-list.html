@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Setores Industriais</h1>
+<table>
+  <tr>
+    <th>
+      <b>Nome</b>
+    </th>
+    <th>
+      <b>Lucro(B)</b>
+    </th>
+  </tr>
+  {% for s in setores %}
+  <tr>
+    <td>
+      {{ s.Nome }}
+    </td>
+    <td>
+      {{ s.l }}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

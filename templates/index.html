@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Empresas Top100 EUA database</h1>
+
+<h2>About</h2>
+<p>This web application illustrates the use of the Top 100 USA Companies
+database. The application is built using 
+<a href="https://docs.python.org/3/library/sqlite3.html">sqlite3</a>,
+<a href="https://flask.palletsprojects.com">Flask</a>, and
+<a href="https://jinja.palletsprojects.com">Jinja</a>.
+</p>
+
+<h2>Some database statistics</h2>
+<table>
+<tr>
+  <th>Nome da Tabela</th>
+  <th>Nº de Entradas</th>
+</tr>
+<tr>
+  <td>Empresas</td>
+  <td>{{ stats.n_empresas }}</td>
+</tr>
+<tr>
+  <td>Estados</td>
+  <td>{{ stats.n_estados }}</td>
+</tr>
+<tr>
+  <td>Setores Industriais</td>
+  <td>{{ stats.n_setores }}</td>
+</tr>
+<tr>
+  <td>Fundadores</td>
+  <td>{{ stats.n_fundadores }}</td>
+</tr>
+<tr>
+  <td>Faturacoes</td>
+  <td>{{ stats.n_faturacoes }}</td>
+</tr>
+</table>
+
+
+<h2>Sample functionality</h2>
+
+<h3>Empresas</h3>
+<p>
+   <a href="/empresas">List all</a>
+</p>
+<p>Get empresa info:
+<form name="mid" action="javascript:window.open('/empresas/'+document.forms['mid'].elements['id'].value,'_self')">
+   Id Empresa:<input value="1000" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+  
+<p>Search by name:
+<form name="msearch" action="javascript:window.open('/empresas/search/'+document.forms['msearch'].elements['expr'].value,'_self')">
+  <input name="expr" id="expr" value="Walmart" required/>
+  <input type="submit" value="search"/>
+</form>
+</p>
+
+<h3>Fundadores</h3>
+<p>
+   <a href="/fundadores">List all</a>
+</p>
+<p>Get fundador info:
+<form name="aid" action="javascript:window.open('/fundadores/'+document.forms['aid'].elements['id'].value,'_self')">
+   Fundador Id:<input value="1" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+  
+<p>Search by name (prone to <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection</a>!)
+  <form name="asearch" action="javascript:window.open('/fundadores/search/'+document.forms['asearch'].elements['expr'].value,'_self')">
+    <input name="expr" id="expr" value="Bill" required/>
+    <input type="submit" value="search"/>
+  </form>
+</p>
+
+<h3>Setores Industriais</h3>
+<p>
+   <a href="/setores">List all</a>
+</p>
+
+<p>Get setor info:
+<form name="gid" action="javascript:window.open('/setores/'+document.forms['gid'].elements['id'].value,'_self')">
+   Setor Id:<input value="1" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+
+{% endblock %}

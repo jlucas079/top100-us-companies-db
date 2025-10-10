@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Pesquisa de Empresa </h1>
+<p><b>Expressao de procura:</b>"{{ search.expr }}"</p>
+<p>
+<ul>
+  {% for e in empresas %}
+  <li><a href="/empresas/{{ e.IDEmpresas }}">{{ e.Nome }}</a></li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}

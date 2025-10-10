@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ empresa.Nome }}</h1>
+<p>
+  <b>IDEmpresa: </b>{{ empresa.IDEmpresa }}
+</p>
+<p>
+  <b>Nome: </b>{{ empresa.Nome }}
+</p>
+<p>
+  <b>Rank: </b>{{ empresa.Rank }}
+</p>
+<p>
+  <b>NºFuncionarios: </b>{{ empresa.NFuncionarios }}
+</p>
+<p>
+  <b>Setor Industrial: </b>
+<ul>
+  {% for s in setor %}
+  <li>
+    <a href="/setores/{{ s.IDSetor }}">{{ s.Nome }}</a>
+  </li>
+  {% endfor %}
+</ul>
+</p>
+<p>
+  <b>Fundadores: </b>
+<ul>
+  {% for f in fundador %}
+  <li>
+    <a href="/fundadores/{{ f.IDFundador }}">{{ f.Nome }}</a>
+  </li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}

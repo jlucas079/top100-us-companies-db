@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Faturacoes</h1>
+<table>
+  <tr>
+    <th>
+      <b>ID Empresa</b>
+    </th>
+    <th>
+      <b>Volume de Negocios</b>
+    </th>
+    <th>
+      <b>Taxa de Crescimento</b>
+    </th>
+  </tr>
+
+  {% for f in faturacoes %}
+  <tr>
+    <td>
+      <a href="/empresas/{{ f.IDEmpresa }}">{{ f.IDEmpresa }}</a>
+    </td>
+    <td>
+      {{ f.v }}
+    </td>
+    <td>
+      {{ f.t }}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

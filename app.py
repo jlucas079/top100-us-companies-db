@@ -41,8 +41,8 @@ def list_empresas():
 def get_empresa(id):
   empresa = db.execute(
       '''
-      SELECT IDEmpresa, Nome, Rank, NFuncionarios 
-      FROM Empresas 
+      SELECT e.IDEmpresa, e.Nome, e.Rank, e.NFuncionarios 
+      FROM Empresas e
       WHERE IDEmpresa = ?
       ''', [id]).fetchone()
 
@@ -62,15 +62,9 @@ def get_empresa(id):
       From Fundadores f JOIN Empresas c ON  f.IDEmpresa = c.IDEmpresa
       where c.IDEmpresa= ?
       ''', [id]).fetchall()
-  
-  faturacao = db.execute(
-      '''
-      Select f."Volume de negocios(Milhoes)", f."Taxa de crescimento"
-      From Faturacoes f JOIN Empresas c ON  f.IDEmpresa = c.IDEmpresa
-      where c.IDEmpresa= ?
-      ''', [id]).fetchall()
+
   return render_template('movie.html', 
-           empresa=empresa, setor=setor, fundador=fundador, faturacao=faturacao)
+           empresa=empresa, setor=setor, fundador=fundador)
 
 @APP.route('/empresas/search/<expr>/')
 def search_empresa(expr):
@@ -135,8 +129,8 @@ def search_fundador(expr):
 @APP.route('/setores/')
 def list_setores():
     setores = db.execute('''
-      SELECT Nome, "Lucro setorial(bilioes)" as l
-      FROM "Setores Industriais"
+      SELECT s.Nome, "Lucro setorial(bilioes)" as l
+      FROM "Setores Industriais" s
       ORDER BY Nome
     ''').fetchall()
     return render_template('genre-list.html', setores=setores)
@@ -164,11 +158,3 @@ def view_empresa_by_setores(id):
            setor=setor, empresas=empresas)
 
 
-# Faturacoes
-@APP.route('/faturacoes/')
-def list_faturacoes():
-    faturacoes = db.execute('''
-      SELECT f.IDEmpresa, f."Volume de negocios(Milhoes)" AS v, f."Taxa de crescimento" AS t
-      FROM Faturacoes f 
-    ''').fetchall()
-    return render_template('staff-list.html', faturacoes=faturacoes)

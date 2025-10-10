@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{fundador.Nome}}</h1>
+<p>
+  <b>IDFundador: </b>{{ fundador.IDFundador }}
+</p>
+<p>
+  <b>Nome: </b>{{ fundador.Nome }}
+</p>
+<p>
+  <b>Idade: </b>{{ fundador.Idade }}
+</p>
+<p>
+  <b>Nacionalidade: </b>{{ fundador.Nacionalidade }}
+</p>
+
+<p>
+  <b>Empresas: </b>
+<ul>
+  {% for e in empresas %}
+  <li>
+    <a href="/empresas/{{ e.IDEmpresas }}">{{ e.Nome }}</a>
+  </li>
+  {% endfor %}
+</ul>
+</p>
+{% endblock %}
